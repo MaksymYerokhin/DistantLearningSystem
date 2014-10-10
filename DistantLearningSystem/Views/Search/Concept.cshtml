@@ -1,0 +1,123 @@
+﻿@using DistantLearningSystem.Models.DataModels
+@model Concept
+@using DistantLearningSystem.Models.LogicModels.Managers
+@{
+
+    if (Model == null)
+    {
+        <h2>Понятия не обнаружено!</h2>
+        return;
+    }
+
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    var student = Model.Student;
+    var definitions = Model.Definitions;
+    var user = DataManager.DefineUser(Context);
+    bool flag = user.UserType == DistantLearningSystem.Models.UserType.Lecturer && student.StudentGroup.LecturerId == user.Id && Model.Status == 0;
+}
+
+<h2>@Model.Name</h2>
+<section>
+    @if (!String.IsNullOrEmpty(Model.ImgSrc))
+    {
+        <div class="user-avatar">
+            <a class="magnifier" href="@HtmlManager.DefineImagePath(Model.ImgSrc)">
+                <div class="" style="margin-top:10px">
+                    @HtmlManager.Image(Model.ImgSrc + "?w=150", ViewBag.Title)
+                </div>
+            </a>
+        </div>
+    }
+
+    @if (!String.IsNullOrEmpty(Model.Abbreviation))
+    {
+        <p style="font-size: large"><span>Аббревиатура </span>: <span>@Model.Abbreviation</span></p>
+    }
+    <p style="font-size: large"><span>Дата добавления </span>: <span>@String.Format("{0} в {1}", Model.AddedDate.ToShortDateString(), Model.AddedDate.ToShortTimeString())</span></p>
+    <p style="font-size: large"><span>Добавлено </span>: <span>@Html.ActionLink(student.LastName + " " + student.Name, "GetStudentInfo", "User", new { userId = student.Id }, null)</span></p>
+    <p style="font-size: large"><span>Оценка </span>: <span>@((Model.Status==0) ? "Не проверено":Model.Status.ToString())</span></p>
+
+</section>
+@HtmlManager.ProccessResultContainer(ViewBag.Result)
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="action-buttons" style="float:left">
+            @if (flag)
+            {
+                @HtmlManager.AddButton(Html.ActionLink("Поставить оценку", "EditStatus", "Dashboard", 
+                new { table = 0, id = Model.Id }, null))
+            }
+        </div>
+    </div>
+</div>
+
+@if (definitions != null && definitions.Count != 0)
+{
+    <h3>Определения</h3>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Определение </th>
+                                    <th>Дата добавления </th>
+                                    <th>Статус проверки </th>
+                                    <th>Действия </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var definition in definitions)
+                                {
+                                    if (definition.Status == 0 &&
+                                        (user == null || !user.HasModeratorAccess() && definition.StudentId != user.Id))
+                                    {
+                                        continue;
+                                    }
+                                    <tr>
+                                        <td>
+                                            @definition.Id
+                                        </td>
+                                        <td>
+                                            @definition.Text
+                                        </td>
+                                        <td>
+                                            @definition.AddedDate.ToShortDateString()
+                                        </td>
+                                        <td>
+                                            @RevisionStatuses.GetById(definition.Status).Value
+                                        </td>
+                                        <td>
+                                            @if (user != null && (user.HasModeratorAccess() || user.Id == Model.StudentId))
+                                            {
+                                                @HtmlManager.EditIconLink(Url.Action("EditDefinition", "Dashboard", new { id = definition.Id }))
+                                                @HtmlManager.DeleteIconLink(Url.Action("DeleteDefinition", "Dashboard", new { id = definition.Id }))
+                                            }
+                                            @Html.ActionLink("Просмотр", "Definition", new { id = definition.Id })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="action-buttons" style="float:left">
+            @if (user != null && user.UserType == DistantLearningSystem.Models.UserType.Student)
+            {
+                @HtmlManager.AddButton(Html.ActionLink("Добавить определение", "AddDefinition", "Dashboard", new { id = Model.Id }, null))
+            }
+        </div>
+    </div>
+</div>

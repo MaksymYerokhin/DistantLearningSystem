@@ -1,0 +1,83 @@
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\ITourist.dll.config
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\ITourist.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\ITourist.pdb
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\ru\ITourist.resources.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\Antlr3.Runtime.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\EntityFramework.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\EntityFramework.SqlServer.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\ImageResizer.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\ImageResizer.Mvc.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\Newtonsoft.Json.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Net.Http.Formatting.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Helpers.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Http.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Http.WebHost.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Mvc.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Optimization.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Razor.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.WebPages.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.WebPages.Razor.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\WebGrease.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\EntityFramework.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\EntityFramework.SqlServer.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\ImageResizer.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\ImageResizer.Mvc.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\Newtonsoft.Json.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Net.Http.Formatting.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Helpers.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Http.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Http.WebHost.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Mvc.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Optimization.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.Razor.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.WebPages.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\bin\System.Web.WebPages.Razor.xml
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\obj\Debug\ITourist.csprojResolveAssemblyReference.cache
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\obj\Debug\ITourist.App_Resources.Language.resources
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\obj\Debug\ITourist.App_Resources.Language.ru.resources
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\obj\Debug\ITourist.csproj.GenerateResource.Cache
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\obj\Debug\ru\ITourist.resources.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\obj\Debug\ITourist.dll
+C:\Users\Рейдан\Projects\ITourist-Web\ITourist\obj\Debug\ITourist.pdb
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\Antlr3.Runtime.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\EntityFramework.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\EntityFramework.SqlServer.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\ImageResizer.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\ImageResizer.Mvc.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\Newtonsoft.Json.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Net.Http.Formatting.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Helpers.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Http.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Http.WebHost.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Mvc.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Optimization.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Razor.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.WebPages.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.WebPages.Razor.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\WebGrease.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\EntityFramework.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\EntityFramework.SqlServer.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\ImageResizer.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\ImageResizer.Mvc.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\Newtonsoft.Json.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Net.Http.Formatting.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Helpers.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Http.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Http.WebHost.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Mvc.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Optimization.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.Razor.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.WebPages.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\System.Web.WebPages.Razor.xml
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\obj\Debug\ITourist.csprojResolveAssemblyReference.cache
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\DistantLearningSystem.dll.config
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\DistantLearningSystem.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\bin\DistantLearningSystem.pdb
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\obj\Debug\DistantLearningSystem.dll
+C:\Users\Рейдан\Documents\Projects v2.0\DistantLearningSystemDB\ITourist\obj\Debug\DistantLearningSystem.pdb

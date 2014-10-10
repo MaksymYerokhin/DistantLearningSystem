@@ -1,0 +1,38 @@
+﻿@using DistantLearningSystem.Models.LogicModels.Managers
+@{
+    ViewBag.Title = "Добавить формулировку";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    var user = DataManager.DefineUser(Context);
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header fleft">Добавить формулировку</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        @HtmlManager.ProccessResultContainer(ViewBag.Result)
+        @using (Html.BeginForm("ManageFormulationAdding", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+
+                <input type="hidden" name="definitionId" value="@ViewBag.definitionId" />
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Name">Специфическое отличие</label>
+                    <div class="col-md-2">
+                        <input class="form-control" id="specificDifference" name="specificDifference" type="text" placeholder="Специфическое отличие" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @HtmlManager.SubmitButton()
+                        @HtmlManager.AddButton(Html.ActionLink("Назад", "Definition", "Search", new {id = ViewBag.definitionId }, null))
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

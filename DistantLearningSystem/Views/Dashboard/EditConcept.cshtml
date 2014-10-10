@@ -1,0 +1,59 @@
+﻿@using DistantLearningSystem.Models.LogicModels.Managers
+@model DistantLearningSystem.Models.DataModels.Concept
+@{
+    ViewBag.Title = "Редактировать понятие";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    var user = DataManager.DefineUser(Context);
+    if (user == null || Model == null)
+    {
+        <p>Ошибка</p>
+        return;
+    }
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header fleft">Редактировать понятие</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        @HtmlManager.ProccessResultContainer(ViewBag.Result)
+        @using (Html.BeginForm("ManageConceptEditing", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Name">Имя</label>
+                    <div class="col-md-2">
+                        <input class="form-control" id="name" value="@Model.Name" name="name" type="text" placeholder="Имя" required="required">
+                    </div>
+                </div>
+                @Html.HiddenFor(id => Model.Id)
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Name">Аббревиатура</label>
+                    <div class="col-md-2">
+                        <input class="form-control" id="abbreviation" value="@Model.Abbreviation" name="abbreviation" type="text" placeholder="Аббревиатура">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Изображение</label>
+                    <div class="col-md-2">
+                        @HtmlManager.ImageUpload(Model.ImgSrc)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @HtmlManager.SubmitButton()
+                        @HtmlManager.AddButton(Html.ActionLink("Назад", "GetConcepts", "Search"))
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@using DistantLearningSystem.Models.DataModels
+@{
+    ViewBag.Title = "Регистрация";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    ProcessResult result = ViewBag.Result;
+}
+@HtmlManager.ProccessResultContainer(ViewBag.Result)
+@*<div class="row">
+        <div class="col-lg-12">
+            <div class="action-buttons">
+                @HtmlManager.AddButton(Html.ActionLink("Студент", "RegistrateStudent", "User"))
+                @HtmlManager.EditButton(Html.ActionLink("Преподаватель", "RegistrateLecturer", "User"))
+            </div>
+        </div>
+    </div>*@
+@section Scripts{
+    @Scripts.Render("~/bundles/bootstrap")
+<script>
+    $(document).ready(function ()
+    {
+        console.log('here!');
+        onChange();
+    })
+    </script>
+}
+<div class="container" style="margin-top:20px;width:100%" id="some_form">
+    <form>
+        <div class="form-horizontal">
+            <div class="form-group" style="margin-top:20px">
+                <label class="control-label col-md-2">Кто Вы?</label>
+                <div class="col-md-2">
+                    <select class="form-control" onchange="onChange()" id="whoareu">
+                        <option>
+                            Студент
+                        </option>
+                        <option>
+                            Преподаватель
+                        </option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div><div class="container" style="margin-top:20px;width:100%" id="form">
+</div>
+
+@section styles
+{
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+    </style>
+}

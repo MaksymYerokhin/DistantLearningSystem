@@ -1,0 +1,44 @@
+﻿        public static explicit operator UserModel(Student student) 
+        {
+				if(student==null)
+				return null;
+            return new UserModel() 
+            {
+                Id = student.Id,
+                Login = student.Login,
+                Name = student.Name,
+                Password = student.Password,
+                UserType = UserType.Student,
+                LastName = student.LastName,
+                Email = student.Email,
+				ImgSrc = student.ImgSrc
+
+            };
+        }
+
+		public static explicit operator UserModel(Lecturer lecturer)
+        {
+		if(lecturer==null)
+		return null;
+            return new UserModel()
+            {
+                Id = lecturer.Id,
+                Login = lecturer.Login,
+                Name = lecturer.Name,
+                Password = lecturer.Password,
+                UserType = UserType.Lecturer,
+                LastName = lecturer.LastName,
+                Email = lecturer.Email,
+	            ImgSrc = lecturer.ImgSrc
+            };
+        }
+
+		public int GetGroupCourse()
+        {
+            string[] strs = Name.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+            DateTime dt = new DateTime(2000 + Convert.ToInt32(strs[1]), 9, 1);
+            DateTime now = DateTime.Now;
+            var rez = now.Subtract(dt);
+            return ((int)(rez.TotalDays + 365 - 1)) / 365;
+        }
+

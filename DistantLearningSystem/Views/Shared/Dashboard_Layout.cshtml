@@ -1,0 +1,265 @@
+﻿@using DistantLearningSystem.Models.LogicModels.Managers
+@{
+    ViewBag.Title = "Энциклопедия";
+    var user = DataManager.DefineUser(Context);
+    if (user != null && user.UserType == DistantLearningSystem.Models.UserType.Lecturer)
+    {
+        <script>var user1 = "lecturer"</script>
+    }
+    else
+    {
+        <script>var user1 = "student"</script>
+    }
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        @{
+            <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/jquery-1.6.1.min.js"></script>
+            <script language="javascript" type="text/javascript">
+                function handleClick() {
+
+                    document.getElementById('follow').checked = false;
+                    if (document.getElementById('linke').checked == true) {
+                        document.getElementById('follow').disabled = true;
+                        if (user1 != null && user1 != undefined && user1 == "lecturer") {
+                            document.getElementById("confirmation").disabled = false;
+                            document.getElementById("confirm_text").innerHTML = "Удалить";
+                            document.getElementById("confirmation").checked = false;
+                            document.getElementById("confirm_text").style.visibility = 'visible';
+                            document.getElementById("confirmationdiv").style.visibility = 'visible';
+                        }
+                    } else {
+                        document.getElementById('follow').disabled = false;
+                        if (user1 != null && user1 != undefined && user1 == "lecturer") {
+                            document.getElementById("confirmation").checked = false;
+                            document.getElementById("confirmation").disabled = true;
+                            document.getElementById("confirm_text").style.visibility = 'hidden';
+                            document.getElementById("confirmationdiv").style.visibility = 'hidden';
+                        }
+                    }
+                }
+
+                function confirmationClick() {
+                    if (document.getElementById('confirmation').checked == true) {
+                        document.getElementById('confirm_text').innerHTML = "Подтвердить";
+                    } else {
+                        document.getElementById('confirm_text').innerHTML = "Удалить";
+                    }
+                }
+            </script>
+        }
+        <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/arbor.js"></script>
+        <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/arbor-tween.js"></script>
+        <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/graphics.js"></script>
+        <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/renderer.js"></script>
+
+        <style>
+            .togglebox input {
+                display: none;
+            }
+
+            .togglebox {
+                display: inline-block;
+                border: 1px solid #BBB;
+                width: 90px;
+                height: 30px;
+                position: relative;
+                border-radius: 20px;
+                color: #FFF;
+                font-weight: bold;
+                overflow: hidden;
+                box-shadow: 0 1px 0 #CCC;
+            }
+
+            .togglebox label {
+                width: 200%;
+                height: 100%;
+                line-height: 30px;
+                border-radius: 0.4em;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                font-size: 1.1em;
+                cursor: pointer;
+                -webkit-transition: height 0.12s;
+                -moz-transition: height 0.12s;
+                transition: height 0.12s;
+            }
+
+            .togglebox span {
+                position: absolute;
+                right: -100px;
+            }
+
+            .togglebox label::after {
+                content: 'ON';
+                width: 74px;
+                float: left;
+                margin-right: -16px;
+                padding-right: 13px;
+                text-align: center;
+                background: #13E27F;
+                text-shadow: 0 -1px 0px #093B5C;
+                box-shadow: 0 4px 5px -2px rgba(0,0,0,0.3) inset;
+            }
+
+            .togglebox label b {
+                display: block;
+                height: 100%;
+                width: 30px;
+                float: left;
+                position: relative;
+                z-index: 1;
+                border: 1px solid #AAA;
+                background: #F6F6F6;
+                box-shadow: 0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5);
+                border-radius: 20px;
+            }
+
+            .togglebox label:hover b {
+                background: #E5E5E5;
+            }
+
+            .togglebox label::before {
+                content: 'OFF';
+                width: 74px;
+                float: left;
+                margin-left: -15px;
+                padding-left: 13px;
+                text-align: center;
+                background: #E70A25;
+                box-shadow: 0 4px 5px -2px rgba(0,0,0,0.3) inset;
+            }
+
+            .togglebox input:checked ~ label {
+                left: -60px;
+            }
+        </style>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="~/Images/Icons/favicon.png" type="image/x-icon">
+        <link rel="shortcut icon" href="~/Images/Icons/favicon.png" type="image/x-icon" />
+        <title>@ViewBag.Title</title>
+        @Styles.Render("~/bundles/ControlPanelStyles")
+        @RenderSection("Styles", false)
+    </head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand control-panel-brand" href="@Url.Action("Index","Home")">Информационно-обучающая система по курсу "Базы данных"</a>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+        </nav>
+        <!-- /.navbar-static-top -->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                   <li>
+                        <a href="@Url.Action("Index","Home")"><i><img src="~/Images/Icons/5/Home.png" Width="24" Height="24"></i> Главная</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("GetConcepts","Search")"><i><img src="~/Images/Icons/5/Concepts.png" Width="24" Height="24"></i> База понятий</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("GetLectures","Search")"><i><img src="~/Images/Icons/5/Lectures.png" Width="24" Height="24"></i> Преподаватели</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("GetStudents","Search")"><i><img src="~/Images/Icons/5/User.png" Width="24" Height="24"></i> Студенты</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Sources","Search")"><i><img src="~/Images/Icons/5/Sources.png" Width="24" Height="24"></i> База источников</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Classifications","Search")"><i><img src="~/Images/Icons/5/Classifications.png" Width="24" Height="24"></i> Классификации</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Arbor")"><i><img src="~/Images/Icons/5/Arbor.png" Width="24" Height="24"></i> Дерево</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Reports")"><i><img src="~/Images/Icons/5/Reports.png" Width="24" Height="24"></i> Отчет</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Sql")"><i><img src="~/Images/Icons/5/Sql.png" Width="24" Height="24"></i> SQL-редактор</a>
+                    </li>
+                    @*<li>
+                                <a href="@Url.Action("Countries","Dashboard")"><i class="fa im icon-news fa-fw"></i>Страны</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Regions","Dashboard")"><i class="fa im icon-news fa-fw"></i>Регионы</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Places","Dashboard")"><i class="fa im icon-news fa-fw"></i>Места</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Routes","Dashboard")"><i class="fa im icon-news fa-fw"></i>Маршруты</a>
+                            </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Статистика</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-gears fa-fw"></i> Настройки<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Авто</a>
+                                </li>
+                                <li>
+                                    <a href="#">Новости</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    *@
+
+                </ul>
+                <!-- /#side-menu -->
+            </div>
+            <!-- /.sidebar-collapse -->
+        </nav>
+        <!-- /.navbar-static-side -->
+        <div id="page-wrapper">
+            <div class="breadcrumbs flat">
+            </div>
+            <div class="row" style="height:10px">
+                <div class="col-lg-12" style="height:10px">
+                    <div class="action-buttons">
+                        @if (user != null)
+                        {
+                            @HtmlManager.EditButton(Html.ActionLink("Личный кабинет", "Profile", "User"), "height:35px; width:160px");
+                            @HtmlManager.AddButton(Html.ActionLink("Выход", "Logout", "User"), "height:35px; width:90px");
+                        }
+                        else
+                        {
+                            @HtmlManager.EditButton(Html.ActionLink("Вход", "LogIn", "User"), "height:35px; width:90px");
+                            @HtmlManager.AddButton(Html.ActionLink("Регистрация", "Registration", "User"), "height:35px; width:140px")
+                        }
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    @Scripts.Render("~/bundles/ControlPanelScripts")
+    <script>
+        $(document).ready(function () {
+            $(".thumb").hover(function () {
+                $(".bigroundlink .cross").show();
+            });
+        });
+    </script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CourseDataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Classification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Base" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClassificationTypeId" Type="int" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+  </EntityType>
+  <EntityType Name="ClassificationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Concept">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Abbreviation" Type="nvarchar" MaxLength="10" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Connection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClassificationId" Type="int" Nullable="false" />
+    <Property Name="ParentConceptId" Type="int" />
+    <Property Name="ChildConceptId" Type="int" />
+  </EntityType>
+  <EntityType Name="Definition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ConceptId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FacultyId" Type="int" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Formulation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SpecificDifference" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="DefinitionId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Lecturer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Faculty" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepartmentId" Type="int" Nullable="false" />
+    <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImgSrc" Type="nvarchar(max)" />
+    <Property Name="LastVisitDate" Type="datetime" Nullable="false" />
+    <Property Name="Activation" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reference">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pages" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rating" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="SourceId" Type="int" Nullable="false" />
+    <Property Name="DefinitionId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+  </EntityType>
+  <EntityType Name="Source">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Author" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="PublicationYear" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GroupId" Type="int" Nullable="false" />
+    <Property Name="RegDate" Type="datetime" Nullable="false" />
+    <Property Name="LastVisitDate" Type="datetime" Nullable="false" />
+    <Property Name="LecturerId" Type="int" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImgSrc" Type="nvarchar(max)" />
+    <Property Name="Activation" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentConnection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
+    <Property Name="Rating" Type="int" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ConnectionId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" />
+  </EntityType>
+  <EntityType Name="StudentGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Departmen__Facul__5E8A0973">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="FacultyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Lecturer__Depart__625A9A57">
+    <End Role="Department" Type="Self.Department" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Lecturer" Type="Self.Lecturer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Lecturer">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__GroupId__2EA5EC27">
+    <End Role="StudentGroup" Type="Self.StudentGroup" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classification_ClassificationType">
+    <End Role="ClassificationType" Type="Self.ClassificationType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Classification" Type="Self.Classification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClassificationType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Classification">
+        <PropertyRef Name="ClassificationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classification_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Classification" Type="Self.Classification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Classification">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Concept_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Concept" Type="Self.Concept" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Concept">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Connection_ChildConcept">
+    <End Role="Concept" Type="Self.Concept" Multiplicity="0..1" />
+    <End Role="Connection" Type="Self.Connection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Concept">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Connection">
+        <PropertyRef Name="ChildConceptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Connection_Classification">
+    <End Role="Classification" Type="Self.Classification" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Connection" Type="Self.Connection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classification">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Connection">
+        <PropertyRef Name="ClassificationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Connection_ParentConcept">
+    <End Role="Concept" Type="Self.Concept" Multiplicity="0..1" />
+    <End Role="Connection" Type="Self.Connection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Concept">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Connection">
+        <PropertyRef Name="ParentConceptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Definition_Concept">
+    <End Role="Concept" Type="Self.Concept" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Definition" Type="Self.Definition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Concept">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Definition">
+        <PropertyRef Name="ConceptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Definition_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Definition" Type="Self.Definition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Definition">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Formulation_Definition">
+    <End Role="Definition" Type="Self.Definition" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Formulation" Type="Self.Formulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Definition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Formulation">
+        <PropertyRef Name="DefinitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Formulation_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Formulation" Type="Self.Formulation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Formulation">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reference_Definition">
+    <End Role="Definition" Type="Self.Definition" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Reference" Type="Self.Reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Definition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reference">
+        <PropertyRef Name="DefinitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reference_Source">
+    <End Role="Source" Type="Self.Source" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Reference" Type="Self.Reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Source">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reference">
+        <PropertyRef Name="SourceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reference_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Reference" Type="Self.Reference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Reference">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Lecturer">
+    <End Role="Lecturer" Type="Self.Lecturer" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lecturer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="LecturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentConnection_Connection">
+    <End Role="Connection" Type="Self.Connection" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="StudentConnection" Type="Self.StudentConnection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Connection">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentConnection">
+        <PropertyRef Name="ConnectionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentConnection_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="StudentConnection" Type="Self.StudentConnection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentConnection">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CourseDataBaseModelStoreContainer">
+    <EntitySet Name="Classification" EntityType="Self.Classification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassificationType" EntityType="Self.ClassificationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Concept" EntityType="Self.Concept" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Connection" EntityType="Self.Connection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Definition" EntityType="Self.Definition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Formulation" EntityType="Self.Formulation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lecturer" EntityType="Self.Lecturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reference" EntityType="Self.Reference" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Source" EntityType="Self.Source" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentConnection" EntityType="Self.StudentConnection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentGroup" EntityType="Self.StudentGroup" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Departmen__Facul__5E8A0973" Association="Self.FK__Departmen__Facul__5E8A0973">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Lecturer__Depart__625A9A57" Association="Self.FK__Lecturer__Depart__625A9A57">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Lecturer" EntitySet="Lecturer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__GroupId__2EA5EC27" Association="Self.FK__Student__GroupId__2EA5EC27">
+      <End Role="StudentGroup" EntitySet="StudentGroup" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classification_ClassificationType" Association="Self.FK_Classification_ClassificationType">
+      <End Role="ClassificationType" EntitySet="ClassificationType" />
+      <End Role="Classification" EntitySet="Classification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classification_Student" Association="Self.FK_Classification_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Classification" EntitySet="Classification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Concept_Student" Association="Self.FK_Concept_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Concept" EntitySet="Concept" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Connection_ChildConcept" Association="Self.FK_Connection_ChildConcept">
+      <End Role="Concept" EntitySet="Concept" />
+      <End Role="Connection" EntitySet="Connection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Connection_Classification" Association="Self.FK_Connection_Classification">
+      <End Role="Classification" EntitySet="Classification" />
+      <End Role="Connection" EntitySet="Connection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Connection_ParentConcept" Association="Self.FK_Connection_ParentConcept">
+      <End Role="Concept" EntitySet="Concept" />
+      <End Role="Connection" EntitySet="Connection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Definition_Concept" Association="Self.FK_Definition_Concept">
+      <End Role="Concept" EntitySet="Concept" />
+      <End Role="Definition" EntitySet="Definition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Definition_Student" Association="Self.FK_Definition_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Definition" EntitySet="Definition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Formulation_Definition" Association="Self.FK_Formulation_Definition">
+      <End Role="Definition" EntitySet="Definition" />
+      <End Role="Formulation" EntitySet="Formulation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Formulation_Student" Association="Self.FK_Formulation_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Formulation" EntitySet="Formulation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reference_Definition" Association="Self.FK_Reference_Definition">
+      <End Role="Definition" EntitySet="Definition" />
+      <End Role="Reference" EntitySet="Reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reference_Source" Association="Self.FK_Reference_Source">
+      <End Role="Source" EntitySet="Source" />
+      <End Role="Reference" EntitySet="Reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reference_Student" Association="Self.FK_Reference_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Reference" EntitySet="Reference" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Lecturer" Association="Self.FK_Student_Lecturer">
+      <End Role="Lecturer" EntitySet="Lecturer" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentConnection_Connection" Association="Self.FK_StudentConnection_Connection">
+      <End Role="Connection" EntitySet="Connection" />
+      <End Role="StudentConnection" EntitySet="StudentConnection" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentConnection_Student" Association="Self.FK_StudentConnection_Student">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentConnection" EntitySet="StudentConnection" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

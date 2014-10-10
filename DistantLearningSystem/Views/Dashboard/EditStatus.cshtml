@@ -1,0 +1,30 @@
+﻿@using DistantLearningSystem.Models.DataModels
+@{
+    ViewBag.Title = "Выставление оценки";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    var revisions = RevisionStatuses.GetSourceTypes();
+    int indent = ViewBag.id;
+    int stat = ViewBag.status;
+    int tabl = ViewBag.table;
+}
+
+<h2>Изменения статуса</h2>
+<div class="row">
+    <div class="col-lg-12">
+        @HtmlManager.ProccessResultContainer(ViewBag.Result)
+        @using (Html.BeginForm("ManageStatusEditing", "Dashboard", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @HtmlManager.DropDownList(Html, "Статус", "status", revisions, textField: "Value", selectedValue: stat)
+            <input type="hidden" name="id" id="id" value="@ViewBag.id" />
+            <input type="hidden" name="status" id="status" value="@ViewBag.status" />
+            <input type="hidden" name="table" id="table" value="@ViewBag.table" />
+
+            <div class="form-group">
+                <div class="col-md-2">
+                    @HtmlManager.SubmitButton()
+                </div>
+            </div>
+        }
+    </div>
+</div>

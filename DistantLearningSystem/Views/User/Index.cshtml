@@ -1,0 +1,22 @@
+﻿@using DistantLearningSystem.Models
+@model UserModel
+@{
+    ViewBag.Title = Model.Name + " " + Model.LastName;
+}
+<section>
+    <div class="user-avatar">
+        <a class="magnifier" href="@HtmlManager.DefineImagePath(Model.ImgSrc)">
+            <div class="" style="margin-top:10px">
+                @HtmlManager.Image(Model.ImgSrc + "?w=150", ViewBag.Title)
+            </div>
+        </a>
+    </div>
+    <br />
+    <p style="font-size: large"><span>ФИО: </span>: <span>@String.Format(Model.LastName + Model.Name)</span></p>
+    <p style="font-size: large"><span>Группа: </span>: <span>@Model.</span></p>
+    @Html.ActionLink(Model.Email, "", "#", null, new { @class = "btn btn-blue" })
+    @*<p style="font-size: large"><span>@Language.Experience </span>: <span>@Model.Experience</span></p>
+    @Html.ActionLink(Language.ViewSelectedPlaces, "ChosenPlaces", "Route", null, new { @class = "btn btn-blue" })
+    @Html.ActionLink(Language.GoToBookmarks, "Bookmarks", "User", null, new { @class = "btn btn-blue" })
+    @Html.ActionLink(Language.Exit, "Logout", "User", null, new { @class = "btn btn-blue" })*@
+</section>

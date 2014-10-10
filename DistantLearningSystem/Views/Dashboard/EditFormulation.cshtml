@@ -1,0 +1,45 @@
+﻿@using DistantLearningSystem.Models.LogicModels.Managers
+@model DistantLearningSystem.Models.DataModels.Formulation
+@{
+    ViewBag.Title = "Редактировать формулировку";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    var user = DataManager.DefineUser(Context);
+    if (Model == null)
+    {
+        <p>Ошибка</p>
+        return;
+    }
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header fleft">Редактировать формулировку</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        @HtmlManager.ProccessResultContainer(ViewBag.Result)
+        @using (Html.BeginForm("ManageFormulationEditing", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Name">Специфическое отличиче</label>
+                    <div class="col-md-2">
+                        <input class="form-control" id="specificDifference" value="@Model.SpecificDifference" name="specificDifference" type="text" placeholder="Специфическое отличиче" required="required">
+                    </div>
+                </div>
+                @Html.HiddenFor(definitionId => Model.DefinitionId)
+                @Html.HiddenFor(id => Model.Id)
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @HtmlManager.SubmitButton()
+                        @HtmlManager.AddButton(Html.ActionLink("Назад", "GetConcepts", "Search"))
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

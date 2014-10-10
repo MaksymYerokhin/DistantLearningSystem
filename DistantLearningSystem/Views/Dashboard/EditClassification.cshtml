@@ -1,0 +1,51 @@
+﻿@using DistantLearningSystem.Models.LogicModels.Managers
+@using DistantLearningSystem.Models.DataModels
+@model DistantLearningSystem.Models.DataModels.Classification
+@{
+    ViewBag.Title = "Добавить классификацию";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    var classificationTypes = ClassTypes.GetSourceTypes();
+    int selectedValue = 0;
+    foreach (var source in classificationTypes)
+    {
+        if (source.Id == Model.ClassificationTypeId)
+        {
+            break;
+        }
+        selectedValue++;
+    }
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header fleft">Добавить понятие</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        @HtmlManager.ProccessResultContainer(ViewBag.Result)
+        @using (Html.BeginForm("ManageClassificationEditing", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(id=>Model.Id)
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Name">Основание классификации</label>
+                    <div class="col-md-2">
+                        <input class="form-control" id="base" name="base" type="text" value="@Model.Base" placeholder="Основание" required="required">
+                    </div>
+                </div>
+
+                @HtmlManager.DropDownList(Html, "Вид", "type", classificationTypes, textField: "Value", selectedValue:selectedValue)
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @HtmlManager.SubmitButton()
+                        @HtmlManager.AddButton(Html.ActionLink("Назад", "GetConcepts", "Search"))
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

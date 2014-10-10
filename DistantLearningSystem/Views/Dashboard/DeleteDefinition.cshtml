@@ -1,0 +1,43 @@
+﻿@model DistantLearningSystem.Models.DataModels.Definition
+@{
+    ViewBag.Title = "Delete Country";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+@if (Model == null)
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header fleft">Определение не найдено</h1>
+        </div>
+    </div>
+    return;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header fleft">Удалить понятие</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <p>Вы уверены, что хотите удалить определение ? 
+        Будут удалены все формулировки, относящиеся к этому определению.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        @HtmlManager.ProccessResultContainer(ViewBag.Result)
+        @using (Html.BeginForm("ManageDefinitionDeleting", "Dashboard", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(id => Model.Id)
+            @Html.HiddenFor(conceptId => Model.ConceptId)
+            <div class="form-group">
+                @HtmlManager.SubmitButton()
+                @HtmlManager.AddButton(Html.ActionLink("Назад", "Concept", "Search", new { id = Model.Id }, null))
+            </div>
+        }
+    </div>
+</div>

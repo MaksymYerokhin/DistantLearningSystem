@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<li>
+    <a href="#"><i class="fa fa-gears fa-fw"></i> Отчеты<span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <a href="@Url.Action("Report1","Reports")" target="_blank"><i class="fa im icon-news fa-fw"></i>Оценки студентов</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Report2","Reports")" target="_blank"><i class="fa im icon-news fa-fw"></i>Краткая информация про студентов</a>
+        </li>
+    </ul>
+</li>
+
+
+

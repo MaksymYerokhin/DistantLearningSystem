@@ -1,0 +1,175 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using System.Collections
+@using HtmlHelper = System.Web.Mvc.HtmlHelper
+@using DistantLearningSystem.Models.DataModels
+
+@functions{
+    public static string DefineImagePath(string path)
+    {
+        if (String.IsNullOrEmpty(path))
+            return path;
+        if (path[0] == 'h') return path;
+        if (path[0] == '~') path = path.Substring(1);
+        string slash = path[0] == '/' ? "" : "/";
+        return slash + path;
+    }
+
+    public static string GetStatus(int status)
+    {
+        if (status == -1)
+            return "Не проверено преподавателем";
+        else if (status == 0)
+            return "Проверено преподавателем";
+        return "Error";
+    }
+}
+
+@helper EditIconLink(string url)
+{
+    <a style="display: inline-block" title="Редактировать" href="@url"><i class="fa fa-pencil fa-fw"></i>Изменить</a>
+}
+
+@helper DeleteIconLink(string url)
+{
+    <a style="display: inline-block" title="Удалить" href="@url"><i class="fa fa-trash-o fa-fw"></i>Удалить</a>
+}
+
+@helper Image(string path, string alt = "", string styles = "")
+{
+    if (String.IsNullOrWhiteSpace(path) || path[0] == '?')
+    {
+        <img style="@styles" class="thumb" src="/Images/no-image.png" alt="@alt" title="@alt" />
+    }
+    else
+    {
+        <img style="@styles" class="thumb" src="@DefineImagePath(path)" alt="@alt" title="@alt" />
+    }
+}
+
+
+@helper AddButton(HtmlString actionLink, string style = null)
+{
+    if (style == null)
+    {
+        <button type="button" class="btn  btn-success link-button">@actionLink</button>
+    }
+    else
+    {
+        <button type="button" class="btn  btn-success link-button" style="@style">@actionLink</button>
+    }
+}
+@helper ProccessResultContainer(ProcessResult result = null, HtmlHelper html = null)
+{
+    if (result != null && !result.IsEmpty)
+    {
+        string classes = "alert  alert-dismissable ";
+        classes += result.Succeeded ? "alert-success" : "alert-danger";
+        <div class="@classes" style="margin-top:50px">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            @if (html == null)
+            {
+                <span>@result.Message</span>
+            }
+            else
+            {
+                <span>@html.Raw(result.Message)</span>
+            }
+        </div>
+    }
+}
+
+@helper DropDownList(HtmlHelper html, string labelText, string id, IEnumerable items, string valueField = "Id", string textField = "Name", object selectedValue = null)
+{
+    <div class="form-group">
+        <label class="control-label col-md-2">@labelText</label>
+        <div class="fleft pad-15">
+            @html.DropDownList(id, new SelectList(items, valueField, textField, selectedValue), new { @class = "form-control" })
+        </div>
+    </div>
+}
+
+@helper EditButton(HtmlString actionLink, string style = null)
+{
+    if (style == null)
+    {
+        <button type="button" class="btn  btn-primary link-button">@actionLink</button>
+    }
+    else
+    {
+        <button type="button" class="btn  btn-primary link-button" style="@style">@actionLink</button>
+    }
+}
+@helper BreadCrumbs(HtmlHelper html, string text, string action, string controller)
+{
+    @html.ActionLink(text, action, controller)
+}
+
+@helper DashboardBreadCrumbs(HtmlHelper html)
+{
+    @html.ActionLink("Понятия", "GetConcepts", "Search")
+}
+
+@helper ImageUpload(string path = null, string alt = "", bool required = false)
+{
+    if (!String.IsNullOrWhiteSpace(path))
+    {
+        path = "/" + path;
+        <input type="hidden" name="DeleteImage" id="DeleteImage" value="false" />
+        <div class="removable-image">
+            <img class="thumb" src="@path" alt="@alt" title="@alt" />
+            <img class="cross" onclick="HideImage()" src="/Images/Icons/x.png" title="Удалить" alt="Удалить" />
+        </div>
+        <script>
+            //TODO: fix with multiple
+            function HideImage() {
+                $(".removable-image").hide('slow');
+                $("#DeleteImage").val(true);
+            }
+        </script>
+    }
+    if (!required)
+    {
+        <input id="imageUpload" accept="image/*" name="imageUpload" type="file" />
+    }
+    else
+    {
+        <input id="imageUpload" accept="image/*" name="imageUpload" type="file" required="required" />
+    }
+}
+@helper SubmitButton(string onclick = null)
+{
+    if (onclick == null)
+    {
+        <input type="submit" value="Подтвердить" class="btn btn-default btn-outline " />
+    }
+    else
+    {
+        <input type="submit" value="Подтвердить" onclick="@onclick" class="btn btn-default btn-outline " />
+    }
+}
+
+@helper DefaultButton(string onclick = null)
+{
+    if (onclick == null)
+    {
+        <input type="button" value="Подтвердить" class="btn btn-default btn-outline " />
+    }
+    else
+    {
+        <input type="button" value="Подтвердить" onclick="@onclick" class="btn btn-default btn-outline " />
+    }
+}
+
+@helper BackButton(HtmlString actionLink)
+{
+    <button type="button" class="btn btn-default link-button">@actionLink</button>
+}
+
+
+
+
+
+
+
+

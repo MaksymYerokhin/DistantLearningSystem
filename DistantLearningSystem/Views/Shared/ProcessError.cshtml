@@ -1,0 +1,9 @@
+﻿@model String
+@{
+    ViewBag.Title = Language.Error;
+    Layout = "~/Views/Shared/_SideBarLayout.cshtml";
+}
+@if (Model != null)
+{
+    <div style="font-style: italic;  font-size: 150%;">@Model</div>
+}

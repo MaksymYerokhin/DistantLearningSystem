@@ -1,0 +1,45 @@
+﻿@using DistantLearningSystem.Models.DataModels
+@using DistantLearningSystem.Models.LogicModels.Managers
+@using DistantLearningSystem.Models
+@model Student
+
+@{
+    ViewBag.Title = Model.LastName + " " + Model.Name;
+    var currentUser = DataManager.DefineUser(Context);
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    var teacher = Model.StudentGroup.Lecturer;
+
+}
+
+<section>
+    <div class="user-avatar">
+        <a class="magnifier" href="@HtmlManager.DefineImagePath(Model.ImgSrc)">
+            <div class="" style="margin-top:10px">
+                @HtmlManager.Image(Model.ImgSrc + "?w=150", ViewBag.Title)
+            </div>
+        </a>
+    </div>
+    <br />
+    <p style="font-size: large"><span>ФИО </span>: <span>@String.Format(Model.LastName + " " + Model.Name)</span></p>
+    <p style="font-size: large"><span>Группа </span>: <span>@Html.ActionLink(Model.StudentGroup.Name, "GetGroup", "Search", new { Id = Model.GroupId }, null)</span></p>
+    <p style="font-size: large"><span>Преподаватель </span>: <span>@Html.ActionLink(String.Format(teacher.LastName + " " + teacher.Name), "GetLecturerInfo", "User", new { userId = teacher.Id }, null)</span></p>
+    <p style="font-size: large"><span>Дата последнего визита </span>: <span>@String.Format("{0} в {1}", Model.LastVisitDate.ToShortDateString(), Model.LastVisitDate.ToShortTimeString())</span></p>
+
+    @Html.ActionLink(Model.Email, "", "#", null, new { @class = "btn btn-blue", style = "margin-left:-11px" })
+    <div class="row" style="height:10px">
+        <div class="col-lg-12" style="height:10px">
+            <div class="action-buttons" style="float:left">
+                @HtmlManager.EditButton(Html.ActionLink("Просмотреть активность", "Activity", "User", new { id = Model.Id}, null))
+                @if (currentUser != null && currentUser.Id == Model.Id && currentUser.UserType == UserType.Student)
+                {
+                    @HtmlManager.AddButton(Html.ActionLink("Редактировать", "EditProfile", null, new { style = "margin-left:7px" }))
+                }
+            </div>
+        </div>
+    </div>
+
+    @*<p style="font-size: large"><span>@Language.Experience </span>: <span>@Model.Experience</span></p>
+        @Html.ActionLink(Language.ViewSelectedPlaces, "ChosenPlaces", "Route", null, new { @class = "btn btn-blue" })
+        @Html.ActionLink(Language.GoToBookmarks, "Bookmarks", "User", null, new { @class = "btn btn-blue" })
+        @Html.ActionLink(Language.Exit, "Logout", "User", null, new { @class = "btn btn-blue" })*@
+</section>

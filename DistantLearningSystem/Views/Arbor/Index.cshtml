@@ -1,0 +1,99 @@
+﻿@using DistantLearningSystem.Models.LogicModels.Managers
+@using DistantLearningSystem.Models
+
+<span style="cursor: help ; font-family: Monotype Corsiva; font-size: 22px; color: blue;margin-right:15px"
+      title="При нажатии на понятие откроется
+страница этого понятия, при
+нажатии на Добавить откроется
+страница добавления классификации.">
+    Переход по клику <sup>[&nbsp;?]</sup>
+</span>
+@{
+    ViewBag.Title = "None";
+    Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
+    <script> var state = "None"; </script>
+    var user = DataManager.DefineUser(Context);
+    if (user != null && user.UserType == UserType.Student)
+    {
+        <span style="cursor: help; font-family: Monotype Corsiva; font-size: 22px; color: blue;" title="Cначала родитель, потом ребенок.">
+            Добавить связь
+            <sup>[&nbsp;?]</sup>
+        </span>
+        <script>state = "Student";</script>
+        ViewBag.Title = "Student";
+    }
+    if (user != null && user.UserType == UserType.Lecturer)
+    {
+        <span style="cursor: help; margin-left: 60px; font-family:Monotype Corsiva;font-size:22px;color:blue;" 
+              title="Подтвердить - согласиться с верностью связи и оставить ее или удалить связь.">Оценить связь <sup>[&nbsp;?]</sup> </span>
+
+    <span style="visibility:hidden; margin-left: 140px; font-family: Monotype Corsiva; font-size: 22px; color: blue;" id='confirm_text'>
+        Удалить
+    </span>
+        <script>state = "Lecturer";</script>
+        ViewBag.Title = "Lecturer";
+    }
+}
+<br />
+<div style="margin-left: 30px;" class='togglebox'>
+    <input type='checkbox' id='follow'>
+    <label for='follow'><b></b></label>
+</div>
+
+@{
+    if (user != null && (user.UserType == UserType.Student || user.UserType == UserType.Lecturer))
+    {
+        <div style="margin-left: 130px" class='togglebox' id='linkediv'>
+            <input type='checkbox' onchange='handleClick()' id='linke'>
+            <label for='linke'><b></b></label>
+        </div>
+    }
+    if (user != null && user.UserType == UserType.Lecturer)
+    {
+        <div style="visibility:hidden; margin-left: 180px" class='togglebox' id='confirmationdiv'>
+            <input type='checkbox' id='confirmation' onchange='confirmationClick()'>
+            <label for='confirmation'><b></b></label>
+        </div>
+    }
+}
+
+<br />
+
+<canvas id="viewport" width="1200" height="800"></canvas>
+
+<script language="javascript" type="text/javascript">
+    document.getElementById('follow').disabled = false;
+    var node11 = null;
+    var node12 = null;
+    var node1col;
+    var node2col;
+    var selected_classification;
+    var isfree1 = false;
+    var isfree2 = false;
+
+    var sys = arbor.ParticleSystem()
+    var Classifications = sys.addNode('Classifications', { 'color': '#FF003D', 'shape': 'dot', 'label': 'Классификации', 'mass': 1.0 });
+
+    var AddClassification = sys.addNode('AddClassification', { 'color': 'orange', 'shape': 'dot', 'label': 'Добавить' });
+    sys.addEdge(Classifications, AddClassification, { 'directed': true, 'color': 'blue', 'confirm': true });
+
+    $.ajax({
+        url: "/Arbor/Classifications", data: {}, success: function (datac) {
+            for (var i = 0; i < datac.Length; i++) {
+                var Classification = sys.addNode(datac.Data[i], { 'color': 'orange', 'shape': 'dot', 'label': datac.Data[i], 'classid': datac.Value[i] });
+                sys.addEdge(Classifications, Classification, { 'directed': true, 'color': 'blue', 'confirm': true });
+            }
+        }
+    });
+
+    $.ajax({
+        url: "/Arbor/EmptyConcepts", data: {}, success: function (datac) {
+            for (var i = 0; i < datac.Length; i++) {
+                sys.addNode(datac.Data[i], { 'color': 'purple', 'shape': 'rectangle', 'label': datac.Data[i], 'concid': datac.Value[i], 'mass': 1.0 });
+            }
+        }
+    });
+
+    sys.parameters({ stiffness: 1500, repulsion: 500, gravity: true, dt: 0.015, friction: 0.9 })
+    sys.renderer = Renderer("#viewport");
+</script>
