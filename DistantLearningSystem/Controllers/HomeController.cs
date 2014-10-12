@@ -17,7 +17,8 @@ namespace DistantLearningSystem.Controllers
             string s = HttpContext.Request.PhysicalApplicationPath;
             if (result.HasValue)
                 ViewBag.Result = ProcessResults.GetById(result.Value);
-            return View((Object)s);
+            ViewBag.Path = s;
+            return View();
         }
     }
 }
