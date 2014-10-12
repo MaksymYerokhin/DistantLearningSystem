@@ -14,9 +14,10 @@ namespace DistantLearningSystem.Controllers
 
         public ActionResult Index(int? result)
         {
+            string s = HttpContext.Request.PhysicalApplicationPath;
             if (result.HasValue)
                 ViewBag.Result = ProcessResults.GetById(result.Value);
-            return View();
+            return View((Object)s);
         }
     }
 }
