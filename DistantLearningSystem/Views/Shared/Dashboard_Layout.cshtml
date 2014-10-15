@@ -158,10 +158,7 @@
                 </button>
                 <a class="navbar-brand control-panel-brand" href="@Url.Action("Index","Home")">Информационно-обучающая система по курсу "Базы данных"</a>
             </div>
-            <!-- /.navbar-header -->
-            <!-- /.navbar-top-links -->
         </nav>
-        <!-- /.navbar-static-top -->
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
@@ -192,41 +189,9 @@
                     <li>
                         <a href="@Url.Action("Index","Sql")"><i><img src="~/Images/Icons/5/Sql.png" Width="24" Height="24"></i> SQL-редактор</a>
                     </li>
-                    @*<li>
-                                <a href="@Url.Action("Countries","Dashboard")"><i class="fa im icon-news fa-fw"></i>Страны</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Regions","Dashboard")"><i class="fa im icon-news fa-fw"></i>Регионы</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Places","Dashboard")"><i class="fa im icon-news fa-fw"></i>Места</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Routes","Dashboard")"><i class="fa im icon-news fa-fw"></i>Маршруты</a>
-                            </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Статистика</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-gears fa-fw"></i> Настройки<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Авто</a>
-                                </li>
-                                <li>
-                                    <a href="#">Новости</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                    *@
-
                 </ul>
-                <!-- /#side-menu -->
             </div>
-            <!-- /.sidebar-collapse -->
         </nav>
-        <!-- /.navbar-static-side -->
         <div id="page-wrapper">
             <div class="breadcrumbs flat">
             </div>
@@ -249,9 +214,7 @@
             @RenderBody()
 
         </div>
-        <!-- /#page-wrapper -->
     </div>
-    <!-- /#wrapper -->
     @Scripts.Render("~/bundles/ControlPanelScripts")
     <script>
         $(document).ready(function () {

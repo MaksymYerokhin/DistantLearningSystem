@@ -290,6 +290,16 @@
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Images\Icons\5\Arbor.png" />
+    <Content Include="Images\Icons\5\Classifications.png" />
+    <Content Include="Images\Icons\5\Concepts.png" />
+    <Content Include="Images\Icons\5\Home.png" />
+    <Content Include="Images\Icons\5\Lectures.png" />
+    <Content Include="Images\Icons\5\Reports.png" />
+    <Content Include="Images\Icons\5\Sources.png" />
+    <Content Include="Images\Icons\5\Sql.png" />
+    <Content Include="Images\Icons\5\Students.png" />
+    <Content Include="Images\Icons\5\User.png" />
     <Content Include="Images\Icons\apple-touch-icon-114-precomposed.png" />
     <Content Include="Images\Icons\apple-touch-icon-144-precomposed.png" />
     <Content Include="Images\Icons\apple-touch-icon-57-precomposed.png" />
