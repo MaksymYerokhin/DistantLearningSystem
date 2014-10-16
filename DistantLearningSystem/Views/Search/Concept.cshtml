@@ -14,7 +14,11 @@
     var student = Model.Student;
     var definitions = Model.Definitions;
     var user = DataManager.DefineUser(Context);
-    bool flag = user.UserType == DistantLearningSystem.Models.UserType.Lecturer && student.StudentGroup.LecturerId == user.Id && Model.Status == 0;
+    bool flag = false;
+    if (user != null)
+    {
+        flag = user.UserType == DistantLearningSystem.Models.UserType.Lecturer && student.StudentGroup.LecturerId == user.Id && Model.Status == 0;
+    }
 }
 
 <h2>@Model.Name</h2>
