@@ -204,7 +204,7 @@ function run_ajax(idclass, id1, Concept, reallyselected) {
                         if (arr.length == 1 && arr[0].source.name == "Classifications") {
                             flag = true;
 
-                            if (document.getElementById('linke').checked == true) {
+                            if (document.getElementById('linke') != null && document.getElementById('linke').checked == true) {
 
                                 if (node11 == null) {
                                     node1col = reallyselected.node.data.color;
@@ -244,7 +244,7 @@ function run_ajax(idclass, id1, Concept, reallyselected) {
                         }
                         else {
                             // если выбрано пон€тие
-                            if (document.getElementById('linke').checked == true) {
+                            if (document.getElementById('linke') != null && document.getElementById('linke').checked == true) {
                                 // выбираем родител€
                                 if (node11 == null) {
                                     node1col = reallyselected.node.data.color;
@@ -286,12 +286,12 @@ function run_ajax(idclass, id1, Concept, reallyselected) {
                                     node12.data.color = node2col;
                                     node11 = null;
                                     node12 = null;
-
-                                    document.getElementById('linke').checked = false;
-                                    document.getElementById('linke').disabled = false;
+                                    if (document.getElementById('linke') != null) {
+                                        document.getElementById('linke').checked = false;
+                                    }
                                 }
                                 if (state == "Lecturer") {
-                                    if (document.getElementById('confirmation').checked == true) {
+                                    if (document.getElementById('confirmation') != null && document.getElementById('confirmation').checked == true) {
                                         var act1 = 1;
                                         $.ajax({
                                             url: "/Arbor/DeleteConfirmConnection", data: { idclass: idclass, id1: id1, id2: id2, act: act1 }, success: function (data) {
@@ -309,11 +309,13 @@ function run_ajax(idclass, id1, Concept, reallyselected) {
                                             }
                                         });
                                     }
-                                    document.getElementById("confirm_text").innerHTML = "Ќедоступно";
-                                    document.getElementById("confirmation").checked = false;
-                                    document.getElementById("confirmation").disabled = true;
-                                    document.getElementById('linke').checked = false;
-                                    document.getElementById('linke').disabled = false;
+                                    if (document.getElementById('confirmation') != null) {
+                                        document.getElementById('confirmation').checked = false;
+                                    }
+
+                                    if (document.getElementById('linke') != null) {
+                                        document.getElementById('linke').checked = false;
+                                    }
 
                                     node11.data.color = node1col;
                                     node12.data.color = node2col;

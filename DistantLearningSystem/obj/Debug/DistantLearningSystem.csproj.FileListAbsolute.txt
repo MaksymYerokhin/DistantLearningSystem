@@ -409,7 +409,6 @@ C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\Syst
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Helpers.dll
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Http.dll
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Http.WebHost.dll
-C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Mvc.dll
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Optimization.dll
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Razor.dll
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.WebPages.Deployment.dll
@@ -426,7 +425,6 @@ C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\Syst
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Helpers.xml
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Http.xml
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Http.WebHost.xml
-C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Mvc.xml
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Optimization.xml
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.Razor.xml
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.WebPages.xml
