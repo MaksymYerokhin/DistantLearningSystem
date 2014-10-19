@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace DistantLearningSystem
 {
@@ -40,18 +39,7 @@ namespace DistantLearningSystem
                 "~/Plugins/DataTables/*.css"));
 
             #endregion
-
-            bundles.Add(new ScriptBundle("~/bundles/MorrisScripts").Include(
-                "~/Plugins/Morris/*.js"));
-
-            bundles.Add(new StyleBundle("~/bundles/MorrisStyles").Include(
-                "~/Plugins/Morris/*.css"));
-
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at hC:\Users\Рейдан\Projects\ITourist-Web\ITourist\App_Start\BundleConfig.csttp://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
+          
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
@@ -62,27 +50,7 @@ namespace DistantLearningSystem
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/Custom/custom.js"));
-
-            #region Main
-
-            bundles.Add(new StyleBundle("~/bundles/Main/SharedStyles").Include(
-                        "~/Content/Main/bootstrap.min.css",
-                        "~/Content/Main/bootstrap-responsive.min.css",
-                        "~/Content/Main/main.css",
-                        "~/Content/Main/sl-slide.css",
-                        "~/Content/Main/touchTouch.css"));
-
-            bundles.Add(new ScriptBundle("~/bundles/Main/SharedScripts").Include(
-                     "~/Scripts/Main/Vendor/jquery-1.9.1.min.js",
-                     "~/Scripts/Main/Vendor/bootstrap.min.js",
-                     "~/Scripts/Main/main.js",
-                     "~/Scripts/Main/jquery.touchTouch.js"));
-            bundles.Add(new ScriptBundle("~/bundles/Main/Slider").Include(
-                     "~/Scripts/Main/jquery.ba-cond.min.js",
-                     "~/Scripts/Main/jquery.slitslider.js"));
-
-            #endregion
-
+            
             #region JqueryUI
 
             bundles.Add(new StyleBundle("~/bundles/JqueryUI/Styles").Include("~/Content/jquery-ui.css"));

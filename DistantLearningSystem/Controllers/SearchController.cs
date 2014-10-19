@@ -10,9 +10,7 @@ namespace DistantLearningSystem.Controllers
 {
     public class SearchController : Controller
     {
-        //
         // GET: /Search/
-
         public ActionResult Concept(int id, int? result)
         {
             if (result.HasValue)
@@ -33,6 +31,7 @@ namespace DistantLearningSystem.Controllers
         {
             if (result.HasValue)
                 ViewBag.Result = ProcessResults.GetById(result.Value);
+            var f = DataManager.Classification.GetClassifications();
 
             return View(DataManager.Classification.GetClassifications());
         }
@@ -71,11 +70,6 @@ namespace DistantLearningSystem.Controllers
         {
             var group = DataManager.University.GetGroup(Id);
             return View(group);
-        }
-
-        public ActionResult Index()
-        {
-            return View();
         }
     }
 }

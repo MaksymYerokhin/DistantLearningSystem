@@ -27,7 +27,7 @@ namespace DistantLearningSystem.Controllers
         {
             try
             {
-                string connection_string = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Рейдан\Desktop\DB\DistantLearningSystem\App_Data\CourseDataBase.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework";
+                string connection_string = @"Data Source=SQL5013.Smarterasp.net;Initial Catalog=DB_9B1265_DLS;User Id=DB_9B1265_DLS_admin;Password=learningsystem;MultipleActiveResultSets=True;App=EntityFramework&quot;";
                 SqlConnection connection = new SqlConnection(connection_string);
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(command, connection);

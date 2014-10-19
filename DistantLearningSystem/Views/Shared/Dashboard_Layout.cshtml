@@ -1,7 +1,5 @@
 ﻿@using DistantLearningSystem.Models.LogicModels.Managers
-@using System.Web.Mvc
 @{
-    ViewBag.Title = "Энциклопедия";
     var user = DataManager.DefineUser(Context);
     if (user != null && user.UserType == DistantLearningSystem.Models.UserType.Lecturer)
     {
@@ -12,7 +10,6 @@
         <script>var user1 = "student"</script>
     }
 }
-<!DOCTYPE html>
 <html>
     <head>
         @{
@@ -141,8 +138,9 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="~/Images/Icons/favicon.png" type="image/x-icon">
-        <link rel="shortcut icon" href="~/Images/Icons/favicon.png" type="image/x-icon" />
+        <link rel="icon" href="~/Images/Icons/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="~/Images/Icons/favicon.ico" type="image/x-icon" />
+
         <title>@ViewBag.Title</title>
         @Styles.Render("~/bundles/ControlPanelStyles")
         @RenderSection("Styles", false)
@@ -150,15 +148,7 @@
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <a class="navbar-brand control-panel-brand" href="@Url.Action("Index","Home")">Информационно-обучающая система по курсу "Базы данных"</a>
-            </div>
         </nav>
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
@@ -213,7 +203,6 @@
                 </div>
             </div>
             @RenderBody()
-
         </div>
     </div>
     @Scripts.Render("~/bundles/ControlPanelScripts")

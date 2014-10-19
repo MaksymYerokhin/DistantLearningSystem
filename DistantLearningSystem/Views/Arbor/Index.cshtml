@@ -9,7 +9,7 @@
     Переход по клику <sup>[&nbsp;?]</sup>
 </span>
 @{
-    ViewBag.Title = "None";
+    ViewBag.Title = "Дерево";
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
     <script> var state = "None"; </script>
     var user = DataManager.DefineUser(Context);
@@ -20,7 +20,6 @@
             <sup>[&nbsp;?]</sup>
         </span>
         <script>state = "Student";</script>
-        ViewBag.Title = "Student";
     }
     if (user != null && user.UserType == UserType.Lecturer)
     {
@@ -31,7 +30,6 @@
         Удалить
     </span>
         <script>state = "Lecturer";</script>
-        ViewBag.Title = "Lecturer";
     }
 }
 <br />
