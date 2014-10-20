@@ -65,6 +65,7 @@ namespace DistantLearningSystem.Models.DataModels
             new ProcessResult(29, false, "Классификация уже существует"),
             new ProcessResult(30, true, "Классификация отредактирована"),
             new ProcessResult(31, true, "Классификация удалена"),
+            new ProcessResult(32, false, "Профиль не активен, так как регистрация не подтверждена")
         };
 
         public static ProcessResult ClassificationDeleted
@@ -77,17 +78,17 @@ namespace DistantLearningSystem.Models.DataModels
             get { return Results[30]; }
         }
 
-        public static ProcessResult ClassificationAdded 
+        public static ProcessResult ClassificationAdded
         {
             get { return Results[28]; }
         }
 
-        public static ProcessResult ClassificationExisting 
+        public static ProcessResult ClassificationExisting
         {
             get { return Results[29]; }
         }
 
-        public static ProcessResult FormulationEdited 
+        public static ProcessResult FormulationEdited
         {
             get { return Results[27]; }
         }
@@ -102,7 +103,7 @@ namespace DistantLearningSystem.Models.DataModels
             get { return Results[25]; }
         }
 
-        public static ProcessResult DefinitionWasDeleted 
+        public static ProcessResult DefinitionWasDeleted
         {
             get { return Results[24]; }
         }
@@ -231,6 +232,14 @@ namespace DistantLearningSystem.Models.DataModels
         public static ProcessResult ConceptAdded
         {
             get { return Results[10]; }
+        }
+
+        public static ProcessResult RegistrationNotConfirmed
+        {
+            get
+            {
+                return Results[32];
+            }
         }
     }
 }

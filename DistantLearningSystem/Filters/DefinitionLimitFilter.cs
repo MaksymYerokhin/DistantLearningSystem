@@ -11,6 +11,7 @@ namespace DistantLearningSystem.Filters
 {
     using System.Web.Mvc;
 
+    using DistantLearningSystem.Models;
     using DistantLearningSystem.Models.LogicModels.Managers;
 
     /// <summary>
@@ -36,7 +37,10 @@ namespace DistantLearningSystem.Filters
         /// </param>
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var studentId = DataManager.DefineUser(filterContext.HttpContext).Id;
+            var user = DataManager.DefineUser(filterContext.HttpContext);
+            if (user == null) return;
+            if (user.UserType != UserType.Student) return;
+            var studentId = user.Id;
             var student = DataManager.Student.GetStudent(studentId);
             var limit = DataManager.Student.StudentActionLimits["Definition"];
             if (student.Definitions.Count <= limit)

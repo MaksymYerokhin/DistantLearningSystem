@@ -1,10 +1,7 @@
 ﻿using DistantLearningSystem.Models.DataModels;
 using DistantLearningSystem.Models.LogicModels.Services;
 using DistantLearningSystem.Models.LogicModels.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace DistantLearningSystem.Models.LogicModels.Managers
 {
@@ -17,8 +14,10 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
             else
                 userModel = (UserModel)DataManager.Student.LogInStudent(model);
 
-            if (userModel == null)
-                return ProcessResults.InvalidEmailOrPassword;
+
+            if (userModel == null && model.UserType == UserType.Lecturer)
+                return ProcessResults.RegistrationNotConfirmed;
+            else if (userModel == null) return ProcessResults.InvalidEmailOrPassword;
 
             return ProcessResults.LoggedInSuccessfull;
         }
@@ -31,7 +30,8 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
             foreach (var lecturer in lectures)
             {
                 string curHash = Security.GetHashString(lecturer.Email + lecturer.Password + UserType.Lecturer.ToString());
-                if (curHash == hash) { 
+                if (curHash == hash)
+                {
                     lecturer.Activation = (int)UserStatus.Confirmed;
                     SaveChanges();
                     return ProcessResults.RegistrationConfirmed;
@@ -49,7 +49,7 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
                 }
             }
 
-            return ProcessResults.ErrorOccured ;
+            return ProcessResults.ErrorOccured;
         }
     }
 }
