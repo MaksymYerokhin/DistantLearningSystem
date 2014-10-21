@@ -306,7 +306,6 @@
     <Content Include="Images\Icons\5\Students.png" />
     <Content Include="Images\Icons\5\User.png" />
     <Content Include="Images\Icons\favicon.ico" />
-    <Content Include="Images\Icons\logo.png" />
     <Content Include="Images\Icons\picture.png" />
     <Content Include="Images\no-image.png" />
     <Content Include="Content\Main\main.less" />

@@ -430,7 +430,6 @@ C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\Syst
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.WebPages.xml
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\bin\System.Web.WebPages.Razor.xml
-C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\obj\Debug\DistantLearningSystem.csprojResolveAssemblyReference.cache
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\obj\Debug\DistantLearningSystem.dll
 C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\obj\Debug\DistantLearningSystem.pdb
 D:\Univeristy\DistantLearningSystem\DistantLearningSystem\bin\DistantLearningSystem.dll.config
