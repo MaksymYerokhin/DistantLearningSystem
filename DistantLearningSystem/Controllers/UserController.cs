@@ -201,7 +201,7 @@ namespace DistantLearningSystem.Controllers
             ProcessResult result = DataManager.Authentification.LogInUser(loginModel, out user);
             if (result.Succeeded && user != null)
             {
-                SetUser((UserModel)user, user.Password);
+                SetUser(user, user.Password);
                 return RedirectToAction("Index", "Home");
             }
 
