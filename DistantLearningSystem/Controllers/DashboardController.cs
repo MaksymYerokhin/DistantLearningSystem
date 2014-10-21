@@ -17,6 +17,18 @@ namespace DistantLearningSystem.Controllers
 
         #region Concept
 
+
+        [ConceptLimitFilter]
+        public ActionResult CanAddConcept()
+        {
+            var result = new JsonResult
+            {
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Data = new { can = true }
+            };
+            return result;
+        }
+
         [ConceptLimitFilter]
         public ActionResult AddConcept(int? result)
         {
@@ -80,6 +92,17 @@ namespace DistantLearningSystem.Controllers
         #endregion
 
         #region Definition
+
+        [DefinitionLimitFilter]
+        public ActionResult CanAddDefinition()
+        {
+            var result = new JsonResult
+            {
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Data = new { can = true }
+            };
+            return result;
+        }
 
         [DefinitionLimitFilter]
         public ActionResult AddDefinition(int id, int? result)
@@ -184,6 +207,17 @@ namespace DistantLearningSystem.Controllers
         #region Formulations
 
         [FormulationLimitFilter]
+        public ActionResult CanAddFormulation()
+        {
+            var result = new JsonResult
+            {
+                Data = new { can = true },
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+            return result;
+        }
+
+        [FormulationLimitFilter]
         public ActionResult AddFormulation(int id, int? result)
         {
             if (result.HasValue)
@@ -232,6 +266,18 @@ namespace DistantLearningSystem.Controllers
         #region Classifications
 
         [ClassificationLimitFilter]
+        public ActionResult CanAddClassification()
+        {
+            var result = new JsonResult
+            {
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Data = new { can = true }
+            };
+            return result;
+        }
+
+
+        [ClassificationLimitFilter]
         public ActionResult AddClassification(int? result)
         {
             if (result.HasValue)
@@ -270,7 +316,7 @@ namespace DistantLearningSystem.Controllers
 
         #endregion
 
-        public ActionResult GetAnnouncements(int id) 
+        public ActionResult GetAnnouncements(int id)
         {
             ViewBag.Cocnepts = DataManager.Lecturer.GetConcepts(id).ToList();
             ViewBag.Definitions = DataManager.Lecturer.GetDefinitions(id).ToList();

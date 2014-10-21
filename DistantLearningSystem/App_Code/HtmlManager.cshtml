@@ -3,6 +3,9 @@
 @using System.Collections
 @using HtmlHelper = System.Web.Mvc.HtmlHelper
 @using DistantLearningSystem.Models.DataModels
+@using DistantLearningSystem.Controllers
+@using DistantLearningSystem.Models.LogicModels
+
 
 @functions{
     public static string DefineImagePath(string path)
@@ -47,16 +50,65 @@
     }
 }
 
-
-@helper AddButton(HtmlString actionLink, string style = null)
+@helper AddButton(HtmlString actionLink, string style = null, int userId = 0,  string onclickk = null)
 {
-    if (style == null)
+    int validate = 1;
+    var smg = new DistantLearningSystem.Models.LogicModels.Managers.StudentManager();
+    if (onclickk != null)
     {
-        <button type="button" class="btn  btn-success link-button">@actionLink</button>
+        if (onclickk.Equals("handleClassClick()"))
+        {
+            if(smg.CanAddClassification(userId) == true)
+            {
+                validate = 1;                
+            }
+            else
+            { 
+                validate = 0;
+            }
+        }
+        if (onclickk.Equals("handleDefClick()"))
+        {
+            if (smg.CanAddDefinition(userId) == true)
+            {
+                validate = 1;
+            }
+            else
+            {
+                validate = 0;
+            }
+        }
+        if (onclickk.Equals("handleFormClick()"))
+        {
+            if (smg.CanAddFormulation(userId) == true)
+            {
+                validate = 1;
+            }
+            else
+            {
+                validate = 0;
+            }
+        }
+        if (onclickk.Equals("handleConcClick()"))
+        {
+            if (smg.CanAddConcept(userId) == true)
+            {
+                validate = 1;
+            }
+            else
+            {
+                validate = 0;
+            }
+        }     
+    }
+
+    if (style == null && onclickk != null && validate == 0)
+    {
+        <button onclick="@onclickk" type="button" class="btn  btn-success link-button">Лимит</button>
     }
     else
     {
-        <button type="button" class="btn  btn-success link-button" style="@style">@actionLink</button>
+        <button type="button" class="btn  btn-success link-button" style="@style;">@actionLink</button>
     }
 }
 @helper ProccessResultContainer(ProcessResult result = null, HtmlHelper html = null)
@@ -121,7 +173,6 @@
             <img class="cross" onclick="HideImage()" src="/Images/Icons/x.png" title="Удалить" alt="Удалить" />
         </div>
         <script>
-            //TODO: fix with multiple
             function HideImage() {
                 $(".removable-image").hide('slow');
                 $("#DeleteImage").val(true);
@@ -147,8 +198,8 @@
     {
         <input type="submit" value="Подтвердить" onclick="@onclick" class="btn btn-default btn-outline " />
     }
-}
 
+}
 @helper DefaultButton(string onclick = null)
 {
     if (onclick == null)
@@ -160,16 +211,7 @@
         <input type="button" value="Подтвердить" onclick="@onclick" class="btn btn-default btn-outline " />
     }
 }
-
 @helper BackButton(HtmlString actionLink)
 {
     <button type="button" class="btn btn-default link-button">@actionLink</button>
 }
-
-
-
-
-
-
-
-

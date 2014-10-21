@@ -11,12 +11,35 @@
     }
 }
 <html>
-    <head>
-        @{
-            <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/jquery-1.6.1.min.js"></script>
-            <script language="javascript" type="text/javascript">
-                function handleClick() {
+<head>
+    @{
+        <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/jquery-1.6.1.min.js"></script>
+        <script language="javascript" type="text/javascript">
+            
+            function handleClassClick() {alert("Вы уже добавили максимально допустимое количество классификаций!");}
 
+            function handleDefClick() { alert("Вы уже добавили максимально допустимое количество определений!"); }
+
+            function handleConcClick() { alert("Вы уже добавили максимально допустимое количество понятий!"); }
+
+            function handleFormClick() { alert("Вы уже добавили максимально допустимое количество формулировок!"); }
+
+            function handleClick() {
+
+                var access = true;
+                if (user1 != null && user1 != undefined && user1 == "student") {
+                    $.ajax({
+                        url: "/Arbor/CanAddConnection", data: {}, success: function (datac) {
+                            if (datac.can == false) {
+                                document.getElementById("linke").checked = false;
+                                document.getElementById("linke").disabled = true;
+                                access = false;
+                                alert("Вы уже добавили максимально допустимое количество связей!");
+                            }
+                        }
+                    });
+                }
+                if (access == true) {
                     document.getElementById('follow').checked = false;
                     if (document.getElementById('linke').checked == true) {
                         document.getElementById('follow').disabled = true;
@@ -37,38 +60,38 @@
                         }
                     }
                 }
+            }
 
-                function confirmationClick() {
-                    if (document.getElementById('confirmation').checked == true) {
-                        document.getElementById('confirm_text').innerHTML = "Подтвердить";
-                    } else {
-                        document.getElementById('confirm_text').innerHTML = "Удалить";
-                    }
+            function confirmationClick() {
+                if (document.getElementById('confirmation').checked == true) {
+                    document.getElementById('confirm_text').innerHTML = "Подтвердить";
+                } else {
+                    document.getElementById('confirm_text').innerHTML = "Удалить";
                 }
-            </script>
+            }
+        </script>
+    }
+    <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/arbor.js"></script>
+    <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/arbor-tween.js"></script>
+    <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/graphics.js"></script>
+    <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/renderer.js"></script>
+    <style>
+        .togglebox input {
+            display: none;
         }
-        <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/arbor.js"></script>
-        <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/arbor-tween.js"></script>
-        <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/graphics.js"></script>
-        <script language="javascript" type="text/javascript" src="../../Scripts/Arbor/renderer.js"></script>
 
-        <style>
-            .togglebox input {
-                display: none;
-            }
-
-            .togglebox {
-                display: inline-block;
-                border: 1px solid #BBB;
-                width: 90px;
-                height: 30px;
-                position: relative;
-                border-radius: 20px;
-                color: #FFF;
-                font-weight: bold;
-                overflow: hidden;
-                box-shadow: 0 1px 0 #CCC;
-            }
+        .togglebox {
+            display: inline-block;
+            border: 1px solid #BBB;
+            width: 90px;
+            height: 30px;
+            position: relative;
+            border-radius: 20px;
+            color: #FFF;
+            font-weight: bold;
+            overflow: hidden;
+            box-shadow: 0 1px 0 #CCC;
+        }
 
             .togglebox label {
                 width: 200%;
@@ -134,51 +157,49 @@
             .togglebox input:checked ~ label {
                 left: -60px;
             }
-        </style>
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="~/Images/Icons/favicon.ico" type="image/x-icon">
-        <link rel="shortcut icon" href="~/Images/Icons/favicon.ico" type="image/x-icon" />
-
-        <title>@ViewBag.Title</title>
-        @Styles.Render("~/bundles/ControlPanelStyles")
-        @RenderSection("Styles", false)
-    </head>
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/Images/Icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Images/Icons/favicon.ico" type="image/x-icon" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/bundles/ControlPanelStyles")
+    @RenderSection("Styles", false)
+</head>
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-                <a class="navbar-brand control-panel-brand" href="@Url.Action("Index","Home")">Информационно-обучающая система по курсу "Базы данных"</a>
+            <a style="margin-left: 100px" class="navbar-brand control-panel-brand" href="@Url.Action("Index","Home")">Distant Learning System</a>
         </nav>
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
-                   <li>
-                        <a href="@Url.Action("Index","Home")"><i><img src="~/Images/Icons/5/Home.png" Width="24" Height="24"></i> Главная</a>
+                    <li>
+                        <a href="@Url.Action("Index","Home")"><i><img src="~/Images/Icons/5/Home.png" width="24" height="24"></i> Главная</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("GetConcepts","Search")"><i><img src="~/Images/Icons/5/Concepts.png" Width="24" Height="24"></i> База понятий</a>
+                        <a href="@Url.Action("GetConcepts","Search")"><i><img src="~/Images/Icons/5/Concepts.png" width="24" height="24"></i> База понятий</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("GetLectures","Search")"><i><img src="~/Images/Icons/5/Lectures.png" Width="24" Height="24"></i> Преподаватели</a>
+                        <a href="@Url.Action("GetLectures","Search")"><i><img src="~/Images/Icons/5/Lectures.png" width="24" height="24"></i> Преподаватели</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("GetStudents","Search")"><i><img src="~/Images/Icons/5/User.png" Width="24" Height="24"></i> Студенты</a>
+                        <a href="@Url.Action("GetStudents","Search")"><i><img src="~/Images/Icons/5/User.png" width="24" height="24"></i> Студенты</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Sources","Search")"><i><img src="~/Images/Icons/5/Sources.png" Width="24" Height="24"></i> База источников</a>
+                        <a href="@Url.Action("Sources","Search")"><i><img src="~/Images/Icons/5/Sources.png" width="24" height="24"></i> База источников</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Classifications","Search")"><i><img src="~/Images/Icons/5/Classifications.png" Width="24" Height="24"></i> Классификации</a>
+                        <a href="@Url.Action("Classifications","Search")"><i><img src="~/Images/Icons/5/Classifications.png" width="24" height="24"></i> Классификации</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Arbor")"><i><img src="~/Images/Icons/5/Arbor.png" Width="24" Height="24"></i> Дерево</a>
+                        <a href="@Url.Action("Index","Arbor")"><i><img src="~/Images/Icons/5/Arbor.png" width="24" height="24"></i> Дерево</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Reports")"><i><img src="~/Images/Icons/5/Reports.png" Width="24" Height="24"></i> Отчет</a>
+                        <a href="@Url.Action("Index","Reports")"><i><img src="~/Images/Icons/5/Reports.png" width="24" height="24"></i> Отчет</a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index","Sql")"><i><img src="~/Images/Icons/5/Sql.png" Width="24" Height="24"></i> SQL-редактор</a>
+                        <a href="@Url.Action("Index","Sql")"><i><img src="~/Images/Icons/5/Sql.png" width="24" height="24"></i> SQL-редактор</a>
                     </li>
                 </ul>
             </div>

@@ -25,7 +25,6 @@ body {
         position: inherit;
         margin: 0 0 0 250px;
         padding: 0 30px;
-        min-height: 1300px;
         border-left: 1px solid #e7e7e7;
     }
 }
@@ -321,18 +320,6 @@ table.dataTable thead .sorting:after {
 
 .icon-car {
     font-size: 140%;
-}
-
-.control-panel-brand {
-    background: url('../../Images/Icons/logo.png');
-    background-position: left;
-    -moz-background-size: 75px;
-    -o-background-size: 75px;
-    -webkit-background-size: 75px;
-    background-size: 75px;
-    background-repeat: no-repeat;
-    padding: 15px 80px;
-    margin-left: 15px;
 }
 
 .fa-search {

@@ -14,6 +14,7 @@
     var student = Model.Student;
     var definitions = Model.Definitions;
     var user = DataManager.DefineUser(Context);
+    var userId = user.Id;
     bool flag = false;
     if (user != null)
     {
@@ -120,7 +121,7 @@
         <div class="action-buttons" style="float:left">
             @if (user != null && user.UserType == DistantLearningSystem.Models.UserType.Student)
             {
-                @HtmlManager.AddButton(Html.ActionLink("Добавить определение", "AddDefinition", "Dashboard", new { id = Model.Id }, null))
+                @HtmlManager.AddButton(Html.ActionLink("Добавить определение", "AddDefinition", "Dashboard", new { id = Model.Id }, null), null, userId, "handleDefClick()")
             }
         </div>
     </div>

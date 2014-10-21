@@ -136,9 +136,7 @@
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\Upload\Avatars\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -260,7 +258,6 @@
     <Content Include="Content\Dashboard\bootstrap.min.css" />
     <Content Include="Content\Dashboard\font-awesome.css" />
     <Content Include="Content\Dashboard\font-awesome.min.css" />
-    <Content Include="Content\Dashboard\iconmoon.css" />
     <Content Include="Content\Dashboard\sb-admin.css" />
     <Content Include="Content\Main\bootstrap-responsive.min.css" />
     <Content Include="Content\Main\bootstrap.min.css" />
@@ -279,6 +276,7 @@
       <DependentUpon>variables.css</DependentUpon>
     </Content>
     <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="favicon.ico" />
     <Content Include="Fonts\fontawesome-webfont.svg" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Fonts\icomoon.svg" />
@@ -289,6 +287,14 @@
     <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Images\Avatars\0.jpg" />
+    <Content Include="Images\Avatars\9bcdd8c6c75d7daa5bca27479d0a771e.jpg" />
+    <Content Include="Images\Avatars\bf2d3a2f7ea3febde651996ce7b562fb.jpg" />
+    <Content Include="Images\Avatars\d49b2d3d246a23eb9d7c912a3639d774.jpg" />
+    <Content Include="Images\Concepts\13.png" />
+    <Content Include="Images\Concepts\18.jpg" />
+    <Content Include="Images\Concepts\19.jpg" />
+    <Content Include="Images\Concepts\graph.png" />
     <Content Include="Images\Icons\5\Arbor.png" />
     <Content Include="Images\Icons\5\Classifications.png" />
     <Content Include="Images\Icons\5\Concepts.png" />
@@ -299,6 +305,9 @@
     <Content Include="Images\Icons\5\Sql.png" />
     <Content Include="Images\Icons\5\Students.png" />
     <Content Include="Images\Icons\5\User.png" />
+    <Content Include="Images\Icons\favicon.ico" />
+    <Content Include="Images\Icons\logo.png" />
+    <Content Include="Images\Icons\picture.png" />
     <Content Include="Images\no-image.png" />
     <Content Include="Content\Main\main.less" />
     <Content Include="Content\Main\mixins.less" />
@@ -379,7 +388,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

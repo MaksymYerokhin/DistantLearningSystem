@@ -5,6 +5,7 @@
     ViewBag.Title = "База понятий";
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
     var user = DataManager.DefineUser(Context);
+    var userId = user.Id;
 }
 
 @section Styles
@@ -27,7 +28,7 @@
         <div class="action-buttons">
             @if (user != null && user.UserType == DistantLearningSystem.Models.UserType.Student)
             {
-                @HtmlManager.AddButton(Html.ActionLink("Добавить понятие", "AddConcept", "Dashboard"))
+                @HtmlManager.AddButton(Html.ActionLink("Добавить понятие", "AddConcept", "Dashboard"), null, userId, "handleConcClick()")
             }
         </div>
     </div>

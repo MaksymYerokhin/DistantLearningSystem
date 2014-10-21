@@ -19,6 +19,8 @@
     var references = Model.References.ToList().Where(x => x.Status == 1);
     var conceptId = Model.ConceptId;
     var definitionId = Model.Id;
+    var userId = user.Id;
+
     bool flag = false;
     if (user != null)
     {
@@ -148,7 +150,7 @@
         <div class="action-buttons" style="float:left">
             @if (user != null && user.UserType == DistantLearningSystem.Models.UserType.Student)
             {
-                @HtmlManager.AddButton(Html.ActionLink("Добавить формулировку", "AddFormulation", "Dashboard", new { id = Model.Id }, null))
+                @HtmlManager.AddButton(Html.ActionLink("Добавить формулировку", "AddFormulation", "Dashboard", new { id = Model.Id }, null), null, userId, "handleFormClick()")
             }
         </div>
     </div>

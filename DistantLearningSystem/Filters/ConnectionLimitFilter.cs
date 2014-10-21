@@ -37,18 +37,16 @@ namespace DistantLearningSystem.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var studentId = DataManager.DefineUser(filterContext.HttpContext).Id;
-            var student = DataManager.Student.GetStudent(studentId);
-            var limit = DataManager.Student.StudentActionLimits["Connection"];
-            if (student.StudentConnections.Count <= limit)
+            if (DataManager.Student.CanAddConnection(studentId))
             {
                 return;
             }
 
             var result = new JsonResult
-                             {
-                                 Data = new { can = false },
-                                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                             };
+            {
+                Data = new { can = false },
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
             filterContext.Result = result;
         }
     }

@@ -392,5 +392,41 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
                 this.StudentActionRates["Classification"];
             return maxStudentActions;
         }
+
+        public bool CanAddConnection(int studentId)
+        {
+            var student = this.GetStudent(studentId);
+            var limit = this.StudentActionLimits["Connection"];
+            return student.StudentConnections.Count < limit;
+        }
+
+        public bool CanAddClassification(int studentId)
+        {
+            var student = DataManager.Student.GetStudent(studentId);
+            var limit = DataManager.Student.StudentActionLimits["Classification"];
+            return student.Classifications.Count < limit;
+        }
+
+        public bool CanAddConcept(int studentId)
+        {
+            var student = DataManager.Student.GetStudent(studentId);
+            var limit = DataManager.Student.StudentActionLimits["Concept"];
+            return student.Concepts.Count < limit;
+        }
+
+        public bool CanAddDefinition(int studentId)
+        {
+            var student = DataManager.Student.GetStudent(studentId);
+            var limit = DataManager.Student.StudentActionLimits["Definition"];
+            return student.Definitions.Count < limit;
+        }
+
+        public bool CanAddFormulation(int studentId)
+        {
+            var student = DataManager.Student.GetStudent(studentId);
+            var limit = DataManager.Student.StudentActionLimits["Formulation"];
+
+            return student.Formulations.Count < limit;
+        }
     }
 }
