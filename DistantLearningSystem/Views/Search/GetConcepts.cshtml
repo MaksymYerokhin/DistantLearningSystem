@@ -5,9 +5,10 @@
     ViewBag.Title = "База понятий";
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
     var user = DataManager.DefineUser(Context);
+    var userId;
     if(user!=null)
     { 
-        var userId = user.Id;
+        userId = user.Id;
     }
 }
 

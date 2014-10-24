@@ -18,13 +18,13 @@
     ViewBag.Title = conceptName;
     var references = Model.References.ToList().Where(x => x.Status == 1);
     var conceptId = Model.ConceptId;
-    var definitionId = Model.Id;    
-
+    var definitionId = Model.Id;
+    var userId;
     bool flag = false;
     if (user != null)
     {
         flag = user.UserType == DistantLearningSystem.Models.UserType.Lecturer && student.StudentGroup.LecturerId == user.Id && Model.Status == 0;
-        var userId = user.Id;
+        userId = user.Id;
     }
 }
 
