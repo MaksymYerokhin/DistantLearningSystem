@@ -2,7 +2,7 @@
 @using DistantLearningSystem.Models.LogicModels.Managers
 @{
     var user = DataManager.DefineUser(Context);
-    var userId;
+    int userId = -1;
     if (user != null && user.UserType == DistantLearningSystem.Models.UserType.Lecturer)
     {
         <script>var user1 = "lecturer"</script>

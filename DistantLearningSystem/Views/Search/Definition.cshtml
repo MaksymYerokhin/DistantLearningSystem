@@ -19,7 +19,7 @@
     var references = Model.References.ToList().Where(x => x.Status == 1);
     var conceptId = Model.ConceptId;
     var definitionId = Model.Id;
-    var userId;
+    int userId = -1;
     bool flag = false;
     if (user != null)
     {
