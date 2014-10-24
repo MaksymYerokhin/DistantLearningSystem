@@ -5,7 +5,10 @@
     ViewBag.Title = "База понятий";
     Layout = "~/Views/Shared/Dashboard_Layout.cshtml";
     var user = DataManager.DefineUser(Context);
-    var userId = user.Id;
+    if(user!=null)
+    { 
+        var userId = user.Id;
+    }
 }
 
 @section Styles
