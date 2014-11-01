@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Linq;
 using DistantLearningSystem.Models.DataModels;
 using System.Web;
 using System.IO;
@@ -65,9 +65,7 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
             if (context.Request.Url != null)
             {
                 string auth = context.Request.Url.GetLeftPart(UriPartial.Authority);
-                auth = auth.Substring(auth.LastIndexOf(':'));
-
-                string path = auth + "/User/Confirm?hash=" + token;
+                string path = auth.Replace(auth.Substring(auth.LastIndexOf(':')), "") + "/User/Confirm?hash=" + token;
                 string message = String.Format(StaticSettings.ConfirmationMessage + "{0}", path);
                 return confirmationMessageSender.Send(StaticSettings.ConfirmationTitle, message, email);
             }
