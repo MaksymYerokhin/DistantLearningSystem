@@ -43,11 +43,16 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
             var rez2 = SendLecturerConfirmationMail(lecturer.Name + " " + lecturer.LastName, lecturer.Email);
 
             if (rez1 != "OK")
-                return new ProcessResult(33, false, rez1);
+            {
+                ProcessResults.Results.Add(new ProcessResult(33, false, rez1));
+                return ProcessResults.Results[33];
+            }
 
             if (rez2 != "OK")
-                return new ProcessResult(33, false, rez2);
-
+            {
+                ProcessResults.Results.Add(new ProcessResult(33, false, rez2));
+                return ProcessResults.Results[33];
+            }
             lecturer.LastVisitDate = DateTime.Now;
 
             var st = entities.Lecturers.Add(lecturer);

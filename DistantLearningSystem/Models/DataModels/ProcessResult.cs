@@ -31,7 +31,7 @@ namespace DistantLearningSystem.Models.DataModels
 
     public class ProcessResults
     {
-        static readonly ProcessResult[] Results =
+        public static readonly List<ProcessResult> Results = new List<ProcessResult>()
         {
             new ProcessResult(0, false, "Неверный email или пароль!"), 
             new ProcessResult(1, false, "Пользователь с такими данными уже существует!"),
@@ -175,7 +175,7 @@ namespace DistantLearningSystem.Models.DataModels
 
         public static ProcessResult GetById(int id = -1)
         {
-            if (id < 0 || id > Results.Length) return null;
+            if (id < 0 || id > Results.Count) return null;
             return Results[id];
         }
 

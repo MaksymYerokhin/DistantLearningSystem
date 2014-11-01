@@ -471,4 +471,3 @@ D:\Univeristy\DistantLearningSystem\DistantLearningSystem\bin\System.Web.WebPage
 D:\Univeristy\DistantLearningSystem\DistantLearningSystem\obj\Debug\DistantLearningSystem.csprojResolveAssemblyReference.cache
 D:\Univeristy\DistantLearningSystem\DistantLearningSystem\obj\Debug\DistantLearningSystem.dll
 D:\Univeristy\DistantLearningSystem\DistantLearningSystem\obj\Debug\DistantLearningSystem.pdb
-C:\Users\Maxim\Source\Repos\DistantLearningSystem\DistantLearningSystem\obj\Debug\DistantLearningSystem.csprojResolveAssemblyReference.cache
