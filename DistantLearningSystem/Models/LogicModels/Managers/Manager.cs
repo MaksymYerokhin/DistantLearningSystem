@@ -47,7 +47,7 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
             }
         }
 
-        protected bool SendLecturerConfirmationMail(string fio,  string email)
+        protected string SendLecturerConfirmationMail(string fio,  string email)
         {
             var confirmationMailSender = new ConfirmationMailSender();
             var info = String.Format(ConfigurationManager.AppSettings["TeacherRegistrationMessage"], fio, email);
@@ -57,7 +57,7 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
                 ConfigurationManager.AppSettings["RegitrateLecturer"]);
         }
 
-        protected bool SendConfirmationMail(HttpContextBase context, string email, string password, string type)
+        protected string SendConfirmationMail(HttpContextBase context, string email, string password, string type)
         {
             var confirmationMessageSender = new ConfirmationMailSender();
             string token = Security.GetHashString(email + password + type);
@@ -69,7 +69,7 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
                 return confirmationMessageSender.Send(StaticSettings.ConfirmationTitle, message, email);
             }
 
-            return false;
+            return "BAD";
         }
 
         protected void SaveChanges()

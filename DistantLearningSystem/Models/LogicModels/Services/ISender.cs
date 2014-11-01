@@ -2,6 +2,6 @@
 {
     public interface ISender
     {
-        bool Send(string topic, string text, string userMail);
+        string Send(string topic, string text, string userMail);
     }
 }

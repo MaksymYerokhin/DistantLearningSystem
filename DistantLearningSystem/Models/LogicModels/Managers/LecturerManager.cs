@@ -35,12 +35,18 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
                     server);
             }
 
-            if (!SendConfirmationMail(context,
+            var rez1 = SendConfirmationMail(context,
                 lecturer.Email,
                 lecturer.Password,
-                UserType.Lecturer.ToString()) || 
-                !SendLecturerConfirmationMail(lecturer.Name + " " + lecturer.LastName, lecturer.Email))
-                return ProcessResults.ErrorOccured;
+                UserType.Lecturer.ToString());
+
+            var rez2 = SendLecturerConfirmationMail(lecturer.Name + " " + lecturer.LastName, lecturer.Email);
+
+            if (rez1 != "OK")
+                return new ProcessResult(33, false, rez1);
+
+            if (rez2 != "OK")
+                return new ProcessResult(33, false, rez2);
 
             lecturer.LastVisitDate = DateTime.Now;
 

@@ -18,12 +18,12 @@ namespace DistantLearningSystem.Models.DataModels
         {
             this.StudentConnections = new HashSet<StudentConnection>();
         }
-    
+        
         public int Id { get; set; }
         public int ClassificationId { get; set; }
         public Nullable<int> ParentConceptId { get; set; }
         public Nullable<int> ChildConceptId { get; set; }
-    
+        
         public virtual Classification Classification { get; set; }
         public virtual Concept Concept { get; set; }
         public virtual Concept Concept1 { get; set; }

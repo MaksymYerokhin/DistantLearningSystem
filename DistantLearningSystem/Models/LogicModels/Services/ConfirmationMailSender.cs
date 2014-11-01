@@ -27,7 +27,7 @@ namespace DistantLearningSystem.Models.LogicModels.Services
             port = Convert.ToInt32(ConfigurationManager.AppSettings["port"]);
         }
 
-        public bool Send(string subject, string text, string userMail)
+        public string Send(string subject, string text, string userMail)
         {
             SmtpClient smtpClient = null;
             MailMessage message = null;
@@ -49,11 +49,11 @@ namespace DistantLearningSystem.Models.LogicModels.Services
             }
             catch (SmtpException ex)
             {
-                return false;
+                return ex.Message;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                return ex.Message;
             }
             finally
             {
@@ -63,7 +63,7 @@ namespace DistantLearningSystem.Models.LogicModels.Services
                     smtpClient.Dispose();
             }
 
-            return true;
+            return "OK";
         }
     }
 }
