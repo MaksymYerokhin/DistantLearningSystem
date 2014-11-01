@@ -64,7 +64,9 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
 
             if (context.Request.Url != null)
             {
-                string path = context.Request.Url.GetLeftPart(UriPartial.Authority) + "/User/Confirm?hash=" + token;
+                string auth = context.Request.Url.GetLeftPart(UriPartial.Authority);
+                auth = auth.Substring(auth.IndexOf(':'));
+                string path = auth + "/User/Confirm?hash=" + token;
                 string message = String.Format(StaticSettings.ConfirmationMessage + "{0}", path);
                 return confirmationMessageSender.Send(StaticSettings.ConfirmationTitle, message, email);
             }
