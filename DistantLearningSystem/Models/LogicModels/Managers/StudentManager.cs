@@ -121,7 +121,7 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
                     server);
             }
 
-            if (!SendConfirmationMail(context, student.Email, student.Password, UserType.Student.ToString()))
+            if (SendConfirmationMail(context, student.Email, student.Password, UserType.Student.ToString()) != "OK")
                 return ProcessResults.ErrorOccured;
             student.LastVisitDate = DateTime.Now;
             student.RegDate = DateTime.Now;
