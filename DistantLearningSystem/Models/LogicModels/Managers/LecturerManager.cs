@@ -62,7 +62,8 @@ namespace DistantLearningSystem.Models.LogicModels.Managers
 
         public Lecturer LogInLecturer(LoginModel model)
         {
-            var find = entities.Lecturers.ToList().FirstOrDefault(x =>
+            var lects = entities.Lecturers.ToList();
+            var find = lects.FirstOrDefault(x =>
                 (x.Login == model.LoginOrEmail ||
                 x.Email == model.LoginOrEmail) &&
                 model.Password == x.Password);
